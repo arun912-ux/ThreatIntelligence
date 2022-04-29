@@ -26,7 +26,6 @@
    
 
 5. End Points : 
-    - `api/url`  : to fetch urls
     - `api/domain`  : to fetch domains
     - `api/ip`  : to fetch ips
 
@@ -40,7 +39,6 @@
 
 - **IP** : to fetch IPs
 - **DOMAIN** : to fetch Domains
-- **URL** : to fetch URL
 - **Search box** : to search specific content
 
 <img src="homepage.png" alt="homepage.png" />
