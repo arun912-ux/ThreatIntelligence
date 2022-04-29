@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="#">
+
+</head>
+
+<body>
+
+<div class="bodydiv">
+
+    <br/>
+
+    <br/>
+    <div>
+        <a href="#" id="ip">IP</a>
+        <a href="#" id="domain">DOMAIN</a>
+        <a href="#" id="url">URL</a>
+    </div>
+
+    <div>
+        <form action="http://localhost:8080/demo/api/form/" method="POST" name="theForm" id="theForm">
+
+            <select name="type" id="type">
+                <option value="ip">IP</option>
+                <option value="uri">URL</option>
+                <option value="domain">DOMAIN</option>
+            </select>
+
+            <input type="text" name="input" required id="input">
+            <input type="submit" value="Submit" id="submit">
+
+        </form>
+    </div>
+
+
+
+
+</div>
+</body>
+
+<script src="script.js"></script>
+
+</html>
