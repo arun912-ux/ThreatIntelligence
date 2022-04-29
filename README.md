@@ -41,5 +41,5 @@
 - **DOMAIN** : to fetch Domains
 - **Search box** : to search specific content
 
-<img src="homepage.png" alt="homepage.png" />
+<img src="homepage1.png" alt="homepage1.png" />
 
