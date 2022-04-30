@@ -33,9 +33,7 @@ public class Resource {
     @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN})
     @Path("/domain")
     public String getDomain(){
-        String domains = service.getDomains();
-        System.out.println(domains);
-        return domains;
+        return service.getDomains();
     }
 
 

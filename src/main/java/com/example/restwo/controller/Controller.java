@@ -12,6 +12,8 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
@@ -40,7 +42,6 @@ public class Controller {
     public static void start() throws IOException {
         String xml = getXMLFromSource();
         List<Map<String, Map<String, String>>> mapList = jsonParse(xml);
-//        System.out.println(mapList.get(1));
         save(mapList);
     }
 
@@ -52,6 +53,7 @@ public class Controller {
 
     public static List<Map<String, Map<String, String>>> jsonParse(String xmlString){
 
+        System.out.println("Inside JSONParse Method");
 
         Map<String, Map<String, String>> ipMap = new HashMap<>(0);
         Map<String, Map<String, String>> domainMap = new HashMap<>(0);
@@ -59,9 +61,10 @@ public class Controller {
         JSONObject xmlJSONObj = XML.toJSONObject(xmlString);
         String jsonString = xmlJSONObj.toString(4);
 
+//        System.out.println("\n\n\n\n\n\n" + jsonString + "\n\n\n\n\n");
+
         JSONObject taxii_11_Poll_Response = xmlJSONObj.getJSONObject("taxii_11:Poll_Response");
         JSONArray contentsBlock = taxii_11_Poll_Response.getJSONArray("taxii_11:Content_Block");
-
 
 
         for(int i=0; i< contentsBlock.length(); i++){
@@ -71,35 +74,62 @@ public class Controller {
             try{
                 JSONObject stix_Indicators = stixPackage1.getJSONObject("stix:Indicators");
                 JSONObject stix_Indicator = stix_Indicators.getJSONObject("stix:Indicator");
-                stix_Indicator.remove("indicator:Producer");
+//                stix_Indicator.remove("indicator:Producer");
                 stix_Indicator.remove("indicator:Observable");
                 stix_Indicator.remove("id");
                 stix_Indicator.remove("version");
                 String description = stix_Indicator.get("indicator:Description").toString();
                 stix_Indicator.remove("indicator:Description");
                 stix_Indicator.remove("indicator:Title");
-//                System.out.println("\n\n\n" + stix_Indicator.toString(4) + "\n\n\n");
+
+                String producedTimeZoned = stix_Indicator.getJSONObject("indicator:Producer")
+                                        .getJSONObject("stixCommon:Time")
+                                        .get("cyboxCommon:Produced_Time").toString();
+
+                ZonedDateTime fromDate = ZonedDateTime.parse(producedTimeZoned);
+                String producedTime = fromDate.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy, EEE 'at' hh:mm a"));
+//
+//                System.out.println("\n\n\n" + producedTime + "\n" + stix_Indicators.toString(4) + "\n\n\n");
 
                 if(description.contains("IP")){
 //                    System.out.println("IP : " + description.split(" ")[3]);
+
+                    String type = stix_Indicator.getJSONObject("indicator:Type").get("content").toString();
+//                    System.out.println(type);
+
                     Map<String, String> obj = new LinkedHashMap<>();
                     obj.put("IP", description.split(" ")[3]);
                     obj.put("Description", description.split("\\. ")[0]);
                     obj.put("Response", stix_Indicator.toString()
 //                            .replaceAll("\":\"", "\"=\"")
                             .replaceAll("\n", ""));
+                    obj.put("Produced_Time", producedTime);
+                    obj.put("Indicator_Type",type);
 //                    System.out.println(obj);
                     ipMap.put(description.split(" ")[3], obj);
 
 
                 }else if(description.contains("domain")){
 //                    System.out.println("Domain : " + description.split(" ")[2]);
+
+                    StringBuilder type = new StringBuilder();
+                    JSONArray indicatorTypeArray = stix_Indicator.getJSONArray("indicator:Type");
+                    indicatorTypeArray.forEach(x -> {
+                        JSONObject jObj = (JSONObject) x;
+                        String t = jObj.get("content").toString();
+                        type.append(t).append(", ");
+                    });
+//                    System.out.println("domain types : " + type.deleteCharAt(type.lastIndexOf(",")));
+
+
                     Map<String, String> obj = new LinkedHashMap<>();
                     obj.put("Domain", description.split(" ")[2]);
                     obj.put("Description", description.split("\\. ")[0]);
                     obj.put("Response", stix_Indicator.toString()
 //                            .replaceAll("\":\"", "\"=\"")
                             .replaceAll("\n", ""));
+                    obj.put("Produced_Time", producedTime);
+                    obj.put("Indicator_Type",type.deleteCharAt(type.lastIndexOf(",")).toString());
 //                    System.out.println(obj);
                     domainMap.put(description.split(" ")[2], obj);
                 }
@@ -176,7 +206,7 @@ public class Controller {
                 "    xmlns:taxii_11=\"http://taxii.mitre.org/messages/taxii_xml_binding-1.1\"\n" +
                 "    message_id=\"123456\"\n" +
                 "    collection_name=\"guest.Abuse_ch\">\n" +
-                "    <taxii_11:Exclusive_Begin_Timestamp>" + "2018-04-20" + "T15:00:00Z \n" +
+                "    <taxii_11:Exclusive_Begin_Timestamp>" + "2014-04-20" + "T15:00:00Z \n" +
                 "    </taxii_11:Exclusive_Begin_Timestamp>\n" +
                 "    <taxii_11:Inclusive_End_Timestamp>2018-05-25T15:18:00Z\n" +
                 "    </taxii_11:Inclusive_End_Timestamp>\n" +

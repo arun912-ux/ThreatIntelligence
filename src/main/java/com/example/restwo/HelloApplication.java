@@ -27,7 +27,7 @@ public class HelloApplication extends Application {
             LocalDate date = Instant.ofEpochMilli(file.lastModified()).atZone(ZoneId.systemDefault()).toLocalDate();
             int days = Period.between(date, LocalDate.now()).getDays();
 
-            if( !file.exists() || days > 7 || true) {
+            if( !file.exists() || days > 7) {
                 Controller.start();
             }
 

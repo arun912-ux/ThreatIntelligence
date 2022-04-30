@@ -1,15 +1,13 @@
 import com.example.restwo.HelloApplication;
 import com.example.restwo.controller.Controller;
 import com.example.restwo.service.Service;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.mapdb.HTreeMap;
 
 import java.io.IOException;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -63,12 +61,7 @@ public class ControllerTest {
 //        System.out.println(ip);
 
 
-        String ips = service.getIps();
-        System.out.println(ips);
-//        System.out.println(new JSONArray(ips).toString(4));
-        String domains = service.getDomains();
-        System.out.println(domains);
-//        System.out.println(new JSONArray(domains).toString(4));
+
 
 
         System.out.println("\n\n\n\n\n");
@@ -82,6 +75,32 @@ public class ControllerTest {
 //        System.out.println(new JSONArray(ipSearch).toString(4));
 
 
+    }
+
+    @Test
+    public void testTime(){
+        ZonedDateTime fromDate = ZonedDateTime.parse("2017-05-24T11:43:28+00:00");
+        System.out.println(fromDate.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy, EEE 'at' hh:mm a")));
+
+    }
+
+    @Test
+    public void getThings(){
+        Service service = new Service();
+
+        String ips = service.getIps();
+        System.out.println(ips);
+//        System.out.println(new JSONArray(ips).toString(4));
+        String domains = service.getDomains();
+        System.out.println(domains);
+//        System.out.println(new JSONArray(domains).toString(4));
+
+    }
+
+
+    @Test
+    public void start() throws IOException {
+        Controller.start();
     }
 
 }
