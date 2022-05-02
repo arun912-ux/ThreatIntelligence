@@ -1,3 +1,211 @@
+
+body{
+    margin: 10px;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.bodydiv{
+    margin: 50px;
+    padding: 50px;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    font-size: 40px;
+}
+
+pre {
+    font-family: "courier new", courier, monospace;
+    font-size: 20px;
+    margin: 15px;
+}
+
+.links{
+    /*background-color: chartreuse;*/
+    margin: 10px 80px;
+    text-decoration: unset;
+    /*color: #ff0000;*/
+
+}
+
+
+
+#submit{
+    font-size: 18px;
+    height: 40px;
+    width: 100px;
+}
+form{
+    padding: 20px;
+}
+
+#search{
+    font-size: 20px;
+}
+div {
+    /*background-color: blue;*/
+    text-align: center;
+    padding: 20px 1px;
+}
+
+#type{
+    height: 40px;
+    font-size: 15px;
+}
+
+#input{
+    width: 200px;
+    height: 35px;
+    font-size: 18px;
+}
+#table{
+    border: 3px solid black;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 5px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+table {
+    text-align: center;
+    border: 3px solid black;
+    width: 85%;
+    margin: 0 auto !important;
+}
+th{
+    border: 3px solid black;
+    font-weight: bolder;
+    height: 40px;
+    font-size: larger;
+    padding: 5px;
+}
+td{
+    border: 1px solid black;
+    text-align: left;
+    /* width: 25%; */
+    padding: 8px;
+    padding-left: 25px;
+    font-family :Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+#type1{
+    width: 300px;
+}
+#time{
+    width: 280px;
+}
+#desc{
+    width: 600px;
+}
+
+
+#div1{
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    margin: 100px;
+    margin-top: 10px;
+    padding: 0px;
+}
+
+#pre{
+    display: none;
+}
+
+
+#div2{
+    margin: 50px 100px;
+    padding: 50px;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    display: none;
+}
+
+
+
+#search{
+    width: 900px;
+    height: 50px;
+}
+
+
+#table_length{
+    font-size: large;
+}
+
+
+
+
+/* pagination */
+
+
+
+a.paginate_button{
+    padding: 15px;
+    margin: 10px;
+    color: rgb(0, 0, 255);
+    /* text-decoration: underline; */
+    border: 1px solid black;
+
+}
+
+
+
+.current, .disabled{
+    color: black !important ;
+    text-decoration: none !important;
+}
+
+.current{
+    background-color: aqua ;
+}
+
+.disabled{
+    background-color: lightgray;
+    cursor: not-allowed !important;
+}
+
+#table_paginate{
+    margin: 5px;
+    padding: 5px;
+    font-size: larger;
+}
+
+#table_info{
+    margin-top: 30px;
+    padding-top: 25px;
+}
+
+label{
+    text-decoration: none;
+    text-rendering:optimizeSpeed;
+    font-size: 25px;
+}
+
+input{
+    width: 900px;
+    height: 50px;
+    font-size: large;
+}
+
+select{
+    height: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*body{*/
 /*    margin: 10px;*/
 /*}*/
@@ -90,113 +298,6 @@
 
 
 
-
-
-
-
-body{
-    margin: 10px;
-}
-
-
-.bodydiv{
-    margin: 50px;
-    padding: 50px;
-    align-items: center;
-    align-content: center;
-    align-self: center;
-    font-size: 40px;
-}
-
-pre {
-    font-family: "courier new", courier, monospace;
-    font-size: 20px;
-    margin: 15px;
-}
-
-a{
-    /*background-color: chartreuse;*/
-    margin: 10px 80px;
-    text-decoration: unset;
-    /*color: #ff0000;*/
-
-}
-
-#submit{
-    font-size: 18px;
-    height: 40px;
-    width: 100px;
-}
-form{
-    padding: 20px;
-}
-
-#search{
-    font-size: 20px;
-}
-div {
-    /*background-color: blue;*/
-    text-align: center;
-    padding: 20px 1px;
-}
-
-#type{
-    height: 40px;
-    font-size: 15px;
-}
-
-#input{
-    width: 200px;
-    height: 35px;
-    font-size: 18px;
-}
-#table{
-    border: 3px solid black;
-    font-family: 'Courier New', Courier, monospace;
-}
-table {
-    text-align: center;
-    border: 3px solid black;
-    width: 100%;
-}
-th{
-    border: 3px solid black;
-    font-weight: bolder;
-    height: 40px;
-    font-size: larger;
-}
-td{
-    border: 1px solid black;
-    text-align: left;
-    /* width: 25%; */
-    padding: 8px;
-    padding-left: 25px;
-    font-family :Verdana, Geneva, Tahoma, sans-serif;
-
-}
-
-#type1{
-    width: 300px;
-}
-#time{
-    width: 280px;
-}
-#desc{
-    width: 600px;
-}
-
-
-#div1{
-    align-items: center;
-    text-align: center;
-    align-content: center;
-    margin: 100px;
-    padding: 0px;
-}
-
-#pre{
-    display: none;
-}
 
 
 
