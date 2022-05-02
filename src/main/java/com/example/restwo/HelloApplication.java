@@ -12,8 +12,7 @@ import java.time.ZoneId;
 
 @ApplicationPath("/api")
 public class HelloApplication extends Application {
-
-
+    
     public static File file = new File(System.getProperty("user.home") +
                         File.separator + "Downloads" + File.separator + "ASD123");
 
